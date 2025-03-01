@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Functions
     function updateCounter() {
-        counterDisplay.textContent = `Crew Clicks: ${count}`;
+        counterDisplay.textContent = `Clicks: ${count}`;
     }
 
     function changeColor() {
