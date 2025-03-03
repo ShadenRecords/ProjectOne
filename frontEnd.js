@@ -66,6 +66,6 @@ class Homie {
     }
 }
 
-// You can test the class like this:
+// You can test the class like Testies this:
 // const newHomie = new Homie('Chris');
 // newHomie.sayHi();
