@@ -14,11 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(counterDisplay);
     updateCounter();
 
+    // Fetch the initial click count from the server
+    fetch('/click-count')
+        .then(response => response.json())
+        .then(data => {
+            count = data.count;
+            updateCounter();
+        });
+
     // Event Listeners
     button.addEventListener('click', () => {
         count++;
         updateCounter();
         changeColor();
+        updateClickCountOnServer(count);
     });
 
     // Functions
@@ -30,6 +39,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const greyShade = Math.floor(Math.random() * 256);
         const greyColor = `rgb(${greyShade}, ${greyShade}, ${greyShade})`;
         document.body.style.backgroundColor = greyColor;
+    }
+
+    // Function to update the click count on the server
+    function updateClickCountOnServer(newCount) {
+        fetch('/click-count', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ count: newCount })
+        });
     }
 
     // Simple array of homies
