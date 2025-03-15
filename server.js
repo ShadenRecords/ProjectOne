@@ -3,13 +3,19 @@ const sqlite3 = require('sqlite3').verbose();
 const app = express();
 const port = 3000;
 
-// Create and connect to the SQLite database
-const db = new sqlite3.Database(':memory:');
+// Create and connect to the SQLite database file
+const db = new sqlite3.Database('./clicks.db');
 
-// Create a table to store the click count
+// Create a table to store the click count if it doesn't exist
 db.serialize(() => {
-    db.run("CREATE TABLE click_count (id INTEGER PRIMARY KEY, count INTEGER)");
-    db.run("INSERT INTO click_count (count) VALUES (0)");
+    db.run("CREATE TABLE IF NOT EXISTS click_count (id INTEGER PRIMARY KEY, count INTEGER)");
+    db.get("SELECT count FROM click_count WHERE id = 1", (err, row) => {
+        if (err) {
+            console.error(err.message);
+        } else if (!row) {
+            db.run("INSERT INTO click_count (count) VALUES (0)");
+        }
+    });
 });
 
 // Middleware to parse JSON bodies
