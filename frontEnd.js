@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(button);
 
     // Simple counter
-    let count = 0;
+    let count = localStorage.getItem('clickCount') ? parseInt(localStorage.getItem('clickCount')) : 0;
     const counterDisplay = document.createElement('p');
     document.body.appendChild(counterDisplay);
     updateCounter();
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         count++;
         updateCounter();
         changeColor();
-        updateClickCountOnServer(count);
+        localStorage.setItem('clickCount', count);
     });
 
     // Functions
