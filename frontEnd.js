@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Simple array of homies
-    const homies = ['Xach', 'TBall5', 'Jobiwan', 'Master Caine'];
+    const homies = ['Xach', 'TBall5', 'Jobiwan', 'Master Caine', 'Young Temple', 'Brother Britt'];
     
     // Function to randomly shout out a homie
     function shoutOut() {
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add a shoutout button
     const shoutButton = document.createElement('button');
-    shoutButton.textContent = "Shout to the Crew";
+    shoutButton.textContent = "What's Good";
     document.body.appendChild(shoutButton);
 
     shoutButton.addEventListener('click', () => {
