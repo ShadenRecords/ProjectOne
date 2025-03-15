@@ -27,8 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function changeColor() {
-        const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
-        document.body.style.backgroundColor = randomColor;
+        const greyShade = Math.floor(Math.random() * 256);
+        const greyColor = `rgb(${greyShade}, ${greyShade}, ${greyShade})`;
+        document.body.style.backgroundColor = greyColor;
     }
 
     // Simple array of homies
